@@ -27,6 +27,24 @@ functions:
       - http:
           path: employee
           method: post
+  getEmployeeById:
+    handler: src/infrastructure/serverless/EmployeeHandler.getEmployeeByIdHandler
+    events:
+      - http:
+          path: employee/{id}
+          method: get
+  listEmployee:
+    handler: src/infrastructure/serverless/EmployeeHandler.listEmployeeHandler
+    events:
+      - http:
+          path: employee
+          method: get
+  updateEmployee:
+    handler: src/infrastructure/serverless/EmployeeHandler.updateEmployeeHandler
+    events:
+      - http:
+          path: employee/{id}
+          method: put
 
 custom:
   bundle:
