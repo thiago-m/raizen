@@ -1,0 +1,33 @@
+service: raizen
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: sa-east-1
+  stage: ${opt:stage, 'dev'}
+  environment:
+    STAGE: ${self:provider.stage}
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Action:
+        - dynamodb:DescribeTable
+        - dynamodb:CreateTable
+        - dynamodb:Query
+        - dynamodb:PutItem
+      Resource: 'arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/Raizen_Employee*'
+
+plugins:
+  - serverless-bundle
+  - serverless-offline
+
+functions:
+  createEmployee:
+    handler: src/infrastructure/serverless/EmployeeHandler.createEmployeeHandler
+    events:
+      - http:
+          path: employee
+          method: post
+
+custom:
+  bundle:
+    linting: false
