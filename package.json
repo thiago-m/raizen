@@ -1,0 +1,26 @@
+{
+  "name": "raizen",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Thiago Marciel F Silva",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.14.8",
+    "aws-lambda": "^1.0.7",
+    "serverless-bundle": "^6.1.0",
+    "serverless-offline": "^13.6.0",
+    "ts-jest": "^29.1.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.2"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1647.0",
+    "dynamoose": "^4.0.1",
+    "joi": "^17.13.3",
+    "nanoid": "^5.0.7"
+  }
+}
