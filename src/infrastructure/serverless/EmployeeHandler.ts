@@ -1,4 +1,4 @@
-import { DynamoDBEmployeeRepository } from "../database/dynamoose/EmployeeDBRepositopry"
+import { DynamoDBEmployeeRepository } from "../database/dynamoose/EmployeeDBRepository"
 import { EmployeeController } from "../../interfaces/controllers/EmployeeController"
 import { CreateEmployee } from "../../application/use-cases/employee/Create"
 import { GetEmployeeById } from "../../application/use-cases/employee/GetById"
