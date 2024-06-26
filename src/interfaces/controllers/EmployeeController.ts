@@ -5,12 +5,15 @@ import { CreateEmployee } from '../../application/use-cases/employee/Create'
 import { GetEmployeeById } from '../../application/use-cases/employee/GetById'
 import { ListEmployee } from '../../application/use-cases/employee/List'
 import { UpdateEmployee } from '../../application/use-cases/employee/Update'
+import { DeleteEmployee } from '../../application/use-cases/employee/Delete'
+
 export class EmployeeController {
   constructor(
     private createEmployee: CreateEmployee,
 		private getEmployeeById: GetEmployeeById,
 		private listEmployee: ListEmployee,
-		private updateEmployee: UpdateEmployee
+		private updateEmployee: UpdateEmployee,
+		private deleteEmployee: DeleteEmployee
   ){ }
 
   create: ApiGatewayProxyHandler = async event => {
@@ -66,6 +69,18 @@ export class EmployeeController {
 			return res.set(200)
 		} catch(error) {
 			const message = 'Erro atualizar funcionário'
+			res.set(500, {message, id, error})
+		} finally { return res.send() }
+	}
+
+	delete: ApiGatewayProxyHandler = async event => {
+    const { id } = event.pathParameters
+		try {
+			await this.deleteEmployee.execute(id)
+
+			return res.set(200)
+		} catch(error) {
+			const message = 'Erro ao deletar funcionário'
 			res.set(500, {message, id, error})
 		} finally { return res.send() }
 	}

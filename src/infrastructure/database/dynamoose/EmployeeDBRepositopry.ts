@@ -32,4 +32,7 @@ export class DynamoDBEmployeeRepository implements EmployeeRepository {
 	async update(id: string, name: string, age: number, occupation: string): Promise<void> {
 			await EmployeeModel.update({id, name, age, occupation})
 	}
+	async delete(id: string): Promise<void> {
+			await EmployeeModel.delete(id)
+	}
 }

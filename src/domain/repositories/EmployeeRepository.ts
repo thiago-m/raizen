@@ -5,4 +5,5 @@ export interface EmployeeRepository {
   findById(id: string): Promise<Employee | null>
   list(): Promise<Array<Employee> | null>
   update(id: string, name: string, age: number, occupation: string): Promise<void>
+  delete(id: string): Promise<void>
 }
